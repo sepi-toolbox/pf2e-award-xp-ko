@@ -30,8 +30,10 @@ Hooks.once("init", async () => {
                         openPlayerDialog: Award.openDialog,
                         Award: Award
                         }
-    registerCustomEnrichers();
+    // 설정 등록을 먼저 수행 — enrichers 등록이 (v14 API 변경 등으로) 실패하더라도
+    // welcomeMessageShown 등 월드 설정이 누락되어 ready 훅에서 터지지 않도록 한다.
     registerWorldSettings();
+    registerCustomEnrichers();
 
 });
 
@@ -45,10 +47,15 @@ Hooks.on("chatMessage", (app, message, data) => game.pf2e_awardxp.Award.chatMess
 
 export function registerCustomEnrichers() {
 // v14: TextEditor가 CONFIG.ux.TextEditor로 이동 (v13 하위호환 폴백 유지)
-(CONFIG.ux?.TextEditor ?? CONFIG.TextEditor).enrichers.push({
-    pattern: /\[\[\/(?<type>award) (?<config>[^\]]+)]](?:{(?<label>[^}]+)})?/gi,
-    enricher: enrichAward
-})
+const textEditor = CONFIG.ux?.TextEditor ?? CONFIG.TextEditor;
+if (textEditor?.enrichers) {
+    textEditor.enrichers.push({
+        pattern: /\[\[\/(?<type>award) (?<config>[^\]]+)]](?:{(?<label>[^}]+)})?/gi,
+        enricher: enrichAward
+    });
+} else {
+    console.warn("pf2e-award-xp | TextEditor.enrichers를 찾을 수 없어 인라인 @award 보강을 건너뜁니다 (Foundry API 변경 가능성).");
+}
 
 document.body.addEventListener("click", awardAction);
 }
@@ -352,6 +359,8 @@ class Award extends HandlebarsApplicationMixin(ApplicationV2) {
 
 
   static _welcomeMessage() {
+        // 설정이 등록되지 않았으면(초기화 실패 등) 조용히 반환 — 콘솔 에러 방지
+        if (!game.settings.settings.has("pf2e-award-xp.welcomeMessageShown")) return;
         if (!game.settings.get("pf2e-award-xp", "welcomeMessageShown")) {
             if (game.user.isGM) {
                 const content = [`

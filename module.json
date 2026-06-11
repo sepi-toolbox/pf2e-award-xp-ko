@@ -2,7 +2,7 @@
   "id": "pf2e-award-xp",
   "title": "PF2e Award XP (한국어)",
   "description": "Foundry VTT의 PF2e 시스템용 경험치 지급 모듈 — 조우/성취 난이도 기반으로 파티에 경험치를 분배하고, 채팅 명령과 텍스트 인리처를 지원합니다. 한국어 번역본.",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "compatibility": {
     "minimum": "13",
     "verified": "14"
