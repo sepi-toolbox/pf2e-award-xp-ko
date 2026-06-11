@@ -1,6 +1,7 @@
 {
   "id": "pf2e-award-xp",
-  "title": "pf2e award xp",
+  "title": "PF2e Award XP (한국어)",
+  "description": "Foundry VTT의 PF2e 시스템용 경험치 지급 모듈 — 조우/성취 난이도 기반으로 파티에 경험치를 분배하고, 채팅 명령과 텍스트 인리처를 지원합니다. 한국어 번역본.",
   "version": "1.0.8",
   "compatibility": {
     "minimum": "13",
@@ -34,8 +35,15 @@
       "name": "English",
       "path": "lang/en.json",
       "flags": {}
+    },
+    {
+      "lang": "ko",
+      "name": "한국어",
+      "path": "lang/ko.json",
+      "flags": {}
     }
   ],
-  "manifest": "https://github.com/jsavko/pf2e-award-xp/releases/latest/download/module.json",
-  "download": "https://github.com/jsavko/pf2e-award-xp/releases/download/1.0.6/module.zip"
+  "url": "https://github.com/sepi-toolbox/pf2e-award-xp-ko",
+  "manifest": "https://raw.githubusercontent.com/sepi-toolbox/pf2e-award-xp-ko/main/module.json",
+  "download": "https://github.com/sepi-toolbox/pf2e-award-xp-ko/archive/refs/heads/main.zip"
 }

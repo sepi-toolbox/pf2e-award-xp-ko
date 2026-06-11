@@ -1,0 +1,42 @@
+{
+    "PF2EAXP.Award": {
+      "Title": "경험치 지급",
+      "Header":"조우 난이도를 선택하거나 직접 값을 입력하세요.",
+      "Action": "경험치 분배",
+      "Reason": "사유",
+      "Message": "{name}에게 '{description}'에 대한 보상으로 {award} 경험치를 지급했습니다.",
+      "NoDestinations": "파티에 구성원이 없습니다",
+      "NotGMError": "/award 명령은 GM만 사용할 수 있습니다.",
+      "UnrecognizedWarning": "{commands}을(를) 해석할 수 없습니다. /award 명령은 '/award 10 획득한 경험치 사유' 형식이어야 합니다.",
+      "combatPopup": "팝업 활성화",
+      "combatPopupHint":"전투 종료 후 경험치 지급 창을 자동으로 엽니다",
+      "Encounters": {
+        "Encounter":"조우",
+        "Trivial": "조우 (사소함)",
+        "Low":"조우 (낮음)",
+        "Moderate":"조우 (보통)",
+        "Severe":"조우 (심각함)",
+        "Extreme":"조우 (극심함)"
+      },
+      "Accomplishments": {
+        "Accomplishment":"성취",
+        "Minor":"성취 (사소함)",
+        "Moderate":"성취 (보통)",
+        "Major":"성취 (주요)"
+      },
+      "Exp":"경험치",
+      "Description":"설명",
+      "DescriptionPlaceholder": "사용자 지정 설명",
+      "Destination": "지급 대상"
+    },
+    "PF2EAXP.Welcome":{
+      "Title":"경험치 지급 인리처 및 명령어",
+      "WelcomeMessage1":"PF2E Award Exp를 처음 사용하시는 것 같습니다.",
+      "WelcomeMessage2": "이제 일지와 채팅 메시지에서 텍스트 인리처를 사용할 수 있습니다",
+      "WelcomeMessageOutput":"아래와 같이 클릭 가능한 요소를 생성합니다 ",
+      "WelcomeEnricher": "[[/award 10 Accomplishment (Minor)]]{사소한 성취}",
+      "WelcomeEnricherJank": "[[/aw<span></span>ard 10 Accomplishment (Minor)]]{사소한 성취}",
+      "WelcomeMessage3": "지급 메뉴를 열려면 선택 인자와 함께 채팅 명령을 사용할 수도 있습니다",
+      "WelcomeCommand":"/award 10 Accomplishment (Minor)"
+    }
+}

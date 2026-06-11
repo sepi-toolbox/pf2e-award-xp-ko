@@ -192,7 +192,7 @@ class Award extends HandlebarsApplicationMixin(ApplicationV2) {
     this.close();
     if (game.user.isGM){
       if (!Number(data.xp)) { 
-        ui.notifications.error("Invalid XP Entry");
+        ui.notifications.error("잘못된 XP 입력값입니다");
         return;
       }
         await this.constructor.awardXP(data.xp, destinations)
@@ -230,7 +230,7 @@ class Award extends HandlebarsApplicationMixin(ApplicationV2) {
   static async awardXP(amount, destinations){
       if ( !amount || !destinations.length ) return;
       if (!Number(amount)) { 
-        ui.notifications.error("Invalid Entry");
+        ui.notifications.error("잘못된 입력값입니다");
         return;
       }
       for ( const destination of destinations ) {
