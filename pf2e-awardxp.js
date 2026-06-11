@@ -44,7 +44,8 @@ Hooks.once("ready", async () => {
 Hooks.on("chatMessage", (app, message, data) => game.pf2e_awardxp.Award.chatMessage(message));
 
 export function registerCustomEnrichers() {
-CONFIG.TextEditor.enrichers.push({
+// v14: TextEditor가 CONFIG.ux.TextEditor로 이동 (v13 하위호환 폴백 유지)
+(CONFIG.ux?.TextEditor ?? CONFIG.TextEditor).enrichers.push({
     pattern: /\[\[\/(?<type>award) (?<config>[^\]]+)]](?:{(?<label>[^}]+)})?/gi,
     enricher: enrichAward
 })
@@ -255,10 +256,10 @@ class Award extends HandlebarsApplicationMixin(ApplicationV2) {
           {name: game.actors.party.name, award: amount, description: description }),
           destinations:destinations
       }
-      const content = await renderTemplate("modules/pf2e-award-xp/templates/chat/party.hbs", context);
-  
+      const content = await foundry.applications.handlebars.renderTemplate("modules/pf2e-award-xp/templates/chat/party.hbs", context);
+
       const messageData = {
-        type: CONST.CHAT_MESSAGE_STYLES["OTHER"],
+        style: CONST.CHAT_MESSAGE_STYLES.OTHER,
         content: content,
         speaker: ChatMessage.getSpeaker({actor: this.parent}),
         rolls: null,
